@@ -3,18 +3,23 @@
 import sys
 
 def one_line(name,xs,shape) :
+    #print name, xs
     yield ("style","_%s [shape=%s]"%(name,shape))
     while xs != [] :
-        if xs[0] == '{\n' : 
+        if "{" in xs[0] or "}" in xs[0] :
             xs = xs[1:]
             continue            
 
         if xs[0] == "extends" or xs[0] == "implements" :
-            parent = xs[1]
+            xs = xs[1:]
+            continue
+
+        if xs[0] == "" or xs[0] == '\n' : 
+            xs=xs[1:]
+            continue
             
-        yield ("connect","""_%s -> _%s""" % (parent,name))
-        xs = xs[2:]
-        continue
+        yield ("connect","""_%s -> _%s""" % (xs[0],name))
+        xs = xs[1:]
 
                 
 def process(lines) :    
