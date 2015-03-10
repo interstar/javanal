@@ -4,7 +4,7 @@ import sys
 
 def one_line(name,xs,shape) :
     #print name, xs
-    yield ("style","_%s [shape=%s]"%(name,shape))
+    yield ("style",""""%s" [shape=%s]"""%(name,shape))
     while xs != [] :
         if "{" in xs[0] or "}" in xs[0] :
             xs = xs[1:]
@@ -18,7 +18,7 @@ def one_line(name,xs,shape) :
             xs=xs[1:]
             continue
             
-        yield ("connect","""_%s -> _%s""" % (xs[0],name))
+        yield ("connect",""" "%s" -> "%s" """ % (xs[0],name))
         xs = xs[1:]
 
                 
