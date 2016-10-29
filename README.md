@@ -8,12 +8,12 @@ I just wanted to grep the source code for all the *extends* and *implements* sta
 
 Here's how I use it
 
-    cat *pde | egrep 'extends|implements' | javanal | xdot
+    cat *pde | egrep 'extends|implements' | javanal.py > test.dot
+    xdot test.dot
     
 Yeah, I'm looking at Processing files. That's why they have the .pde suffix and I'm not using an IDE that already has this built-in.
 
 Also, my program is small ... only 30 or so classes and interfaces. Big enough to get lost in, but small enough to scroll around a single diagram. Anything larger and you probably want a different tool.
 
-Note javanal here is symbolic-linked to javanal.py.
 
 
